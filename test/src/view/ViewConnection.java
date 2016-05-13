@@ -41,7 +41,7 @@ public class ViewConnection extends javax.swing.JFrame implements Observer {
         cancelCJTP = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ViewConnection");
+        setTitle("Connection");
         setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setFocusable(false);

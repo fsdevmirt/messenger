@@ -1,7 +1,10 @@
 package view;
 
-import model.User;
 
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -10,9 +13,7 @@ import java.util.Observer;
  */
 public class ViewClient extends javax.swing.JFrame implements Observer {
 
-    /**
-     * Creates new form ClientMessenger
-     */
+
     public ViewClient() {
         initComponents();
     }
@@ -29,7 +30,7 @@ public class ViewClient extends javax.swing.JFrame implements Observer {
         jScrollPane1 = new javax.swing.JScrollPane();
         listUser = new javax.swing.JList<String>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        windowMessage = new javax.swing.JTextArea();
+        windowMessage = new javax.swing.JList<String>();
         messageSend = new javax.swing.JTextField();
         send = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -44,14 +45,11 @@ public class ViewClient extends javax.swing.JFrame implements Observer {
 
         jScrollPane1.setViewportView(listUser);
 
-        windowMessage.setEditable(false);
-        windowMessage.setColumns(20);
-        windowMessage.setRows(5);
         jScrollPane2.setViewportView(windowMessage);
 
         send.setText("Send");
 
-        menuConnection.setText("ViewConnection");
+        menuConnection.setText("Connection");
 
         menuItemConnect.setText("Connect");
         menuItemConnect.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +97,29 @@ public class ViewClient extends javax.swing.JFrame implements Observer {
         );
 
         pack();
+        //MenuItems
+        this.menuItemConnect.addActionListener(new
+
+                ActionConnect()
+
+        );
+        this.menuItemDisconnect.addActionListener(new
+
+                ActionDisconnect()
+
+        );
+
+        this.menuItemExit.addActionListener(new
+
+                ActionCancel()
+
+        );
+        //Envoi du message
+        this.send.addActionListener(new
+
+                ActionSend()
+
+        );
     }// </editor-fold>
 
     private void menuItemConnectActionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,11 +130,7 @@ public class ViewClient extends javax.swing.JFrame implements Observer {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -153,10 +170,48 @@ public class ViewClient extends javax.swing.JFrame implements Observer {
     private javax.swing.JMenuItem menuItemExit;
     private javax.swing.JTextField messageSend;
     private javax.swing.JButton send;
-    private javax.swing.JTextArea windowMessage;
+    private javax.swing.JList<String> windowMessage;
 
     @Override
     public void update(Observable o, Object arg) {
+
+    }
+
+
+    public class ActionConnect implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            connect();
+        }
+    }
+
+    public class ActionDisconnect implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            disconnect();
+        }
+    }
+
+    public class ActionCancel implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            cancel();
+        }
+    }
+    public class ActionSend implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            send();
+        }
+    }
+    public void connect() {
+
+    }
+    public void disconnect() {
+
+
+    }
+    public void cancel() {
+        this.dispose();
+    }
+
+    public void send() {
 
     }
     // End of variables declaration
