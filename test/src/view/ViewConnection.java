@@ -1,17 +1,20 @@
 package view;
 
-import javax.swing.*;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Created by Frank on 11/05/2016.
  */
-public class Connection extends javax.swing.JFrame {
+public class ViewConnection extends javax.swing.JFrame implements Observer {
 
     /**
-     * Creates new form Connection
+     * Creates new form ViewConnection
      */
-    public Connection() {
+    public ViewConnection() {
         initComponents();
     }
 
@@ -38,7 +41,7 @@ public class Connection extends javax.swing.JFrame {
         cancelCJTP = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Connection");
+        setTitle("ViewConnection");
         setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setFocusable(false);
@@ -135,6 +138,12 @@ public class Connection extends javax.swing.JFrame {
         );
 
         pack();
+        //Annuler la fenêtre de connection
+        this.cancelCJTP.addActionListener(new
+
+                ActionCancel()
+
+        );
     }// </editor-fold>
 
     /**
@@ -154,20 +163,20 @@ public class Connection extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Connection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewConnection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Connection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewConnection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Connection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewConnection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Connection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewConnection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Connection().setVisible(true);
+                new ViewConnection().setVisible(true);
             }
         });
     }
@@ -185,6 +194,23 @@ public class Connection extends javax.swing.JFrame {
     private javax.swing.JTextPane serverNameJTP;
     private javax.swing.JLabel serverPortJL;
     private javax.swing.JTextPane serverPortJTP;
+
+
+
+    @Override
+    public void update(Observable o, Object arg) {
+
+    }
+
+    public class ActionCancel implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            cancel();
+        }
+    }
+
+    public void cancel() {
+        this.dispose();
+    }
     // End of variables declaration
 }
 
