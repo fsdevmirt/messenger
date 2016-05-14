@@ -28,14 +28,14 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
     private javax.swing.JList<String> windowMessage;
     private ModelChannel channel;
     //test
-    private String pseudo "bob";
+    private String pseudo="bob";
 
-    public ViewMain(ModelChannel channel, String pseudo) {
+    public ViewMain(ModelChannel channel) {
         initComponents();
-        super(pseudo);
+
         this.channel = channel;
         this.channel.addObserver(this);
-        this.pseudo.setText(pseudo);
+
     }
 
     /**
