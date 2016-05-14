@@ -9,6 +9,6 @@ public class ModelChannelMessageToString extends ModelChannelMessageAbs {
     }
 
     public String toString() {
-        return this.getPseudo() + " > " + this.getTexte();
+        return this.getPseudo() + " > " + this.getMessageSend();
     }
 }

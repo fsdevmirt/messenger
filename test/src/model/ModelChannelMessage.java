@@ -7,7 +7,7 @@ public interface ModelChannelMessage {
 
     String getPseudo();
 
-    String getTexte();
+    String getMessageSend();
 
     @Override String toString();
 

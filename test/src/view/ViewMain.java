@@ -14,9 +14,10 @@ import java.util.Observer;
  * Created by Frank on 12/05/2016.
  */
 public class ViewMain extends javax.swing.JFrame implements Observer {
-
-    //test
+    //Test
+    private ModelChannel channel;
     private String pseudo="bob";
+    //Fin test
 
     public ViewMain() {
 
@@ -186,7 +187,7 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
     private javax.swing.JTextField messageSend;
     private javax.swing.JButton send;
     private javax.swing.JTextArea windowMessage;
-    private ModelChannel channel;
+
 
     @Override
     public void update(Observable o, Object arg) {

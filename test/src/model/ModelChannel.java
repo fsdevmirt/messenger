@@ -10,14 +10,14 @@ import java.util.Observable;
  */
 public class ModelChannel extends Observable {
 
-    private List<ModelChannelMessage> messages;
+    private List<ModelChannelMessage> windowMessage;
 
     public ModelChannel() {
-        this.messages = new ArrayList<ModelChannelMessage>();
+        this.windowMessage = new ArrayList<ModelChannelMessage>();
     }
 
     public void add(ModelChannelMessage mess) {
-        this.messages.add(mess);
+        this.windowMessage.add(mess);
         this.setChanged();
         this.notifyObservers(mess);
     }

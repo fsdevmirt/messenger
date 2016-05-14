@@ -5,16 +5,17 @@ package model;
  */
 
 abstract public class ModelChannelMessageAbs implements ModelChannelMessage {
-    private String texte;
+    private String messageSend;
     private String pseudo;
 
-    public ModelChannelMessageAbs(String texte, String pseudo) {
-        this.texte = texte;
+    public ModelChannelMessageAbs(String messageSend, String pseudo) {
+        this.messageSend = messageSend;
+
         this.pseudo = pseudo;
     }
 
-    public String getTexte() {
-        return this.texte;
+    public String getMessageSend() {
+        return this.messageSend;
     }
 
     public String getPseudo() {
