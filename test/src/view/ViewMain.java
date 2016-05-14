@@ -15,14 +15,17 @@ import java.util.Observer;
  */
 public class ViewMain extends javax.swing.JFrame implements Observer {
     //Test
-    private ModelChannel channel;
+   private ModelChannel channel;
     private String pseudo="bob";
     //Fin test
 
-    public ViewMain() {
-
+    public ViewMain(ModelChannel channel) {
         initComponents();
 
+        this.channel = channel;
+        this.channel.addObserver(this);
+       //Ajout d'un label avec NickName
+        // this.pseudo.setText(pseudo);
 
 
     }
@@ -235,10 +238,10 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
     }
 
     public void send() {
-     /*   ModelChannelMessage nouveauMessage = new ModelChannelMessageToString(pseudo.getText(), windowMessage.getText());
+        ModelChannelMessage newMessage = new ModelChannelMessageToString(pseudo.getText(), windowMessage.getText());
         windowMessage.setText("");
-        channel.add(nouveauMessage);
-        */
+        channel.add(newMessage);
+        
     }
     // End of variables declaration
 }
