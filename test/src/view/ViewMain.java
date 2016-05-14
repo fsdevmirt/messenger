@@ -18,6 +18,8 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
     //Test
    private ModelChannel channel;
     private String pseudo="bob";
+    DefaultListModel user = new DefaultListModel();
+
     //Fin test
 
     public ViewMain(ModelChannel channel) {
@@ -43,7 +45,7 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        listUser = new javax.swing.JList<String>();
+        listUser = new javax.swing.JList<String>(user);
         jScrollPane2 = new javax.swing.JScrollPane();
         windowMessage = new javax.swing.JTextArea();
         messageSend = new javax.swing.JTextField();
@@ -54,7 +56,10 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
         menuItemDisconnect = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         menuItemExit = new javax.swing.JMenuItem();
-
+        //test listUser
+        user.addElement(pseudo);
+        listUser.updateUI();
+        //Fin test
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("NFP Messenger");
 
