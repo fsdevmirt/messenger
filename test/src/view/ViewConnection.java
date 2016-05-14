@@ -1,6 +1,10 @@
 package view;
 
 
+import model.ModelChannelMessage;
+import model.ModelChannelMessageToString;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
@@ -201,6 +205,18 @@ public class ViewConnection extends javax.swing.JFrame implements Observer {
     public void update(Observable o, Object arg) {
 
     }
+    public class ActionConnect implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            //connect();
+        }
+    }
+
+    public void connect(JTextField pseudoJTP) {
+        ModelChannelMessage newMessage;
+     //   newMessage = new ModelChannelMessageToString(pseudo.getText());
+
+    }
+
 
     public class ActionCancel implements ActionListener {
         public void actionPerformed(ActionEvent e) {
