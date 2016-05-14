@@ -40,7 +40,7 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
         jScrollPane1 = new javax.swing.JScrollPane();
         listUser = new javax.swing.JList<String>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        windowMessage = new javax.swing.JList<String>();
+        windowMessage = new javax.swing.JTextArea();
         messageSend = new javax.swing.JTextField();
         send = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -54,7 +54,10 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
         setTitle("NFP Messenger");
 
         jScrollPane1.setViewportView(listUser);
-
+//version textArea
+        windowMessage.setEditable(false);
+        windowMessage.setColumns(20);
+        windowMessage.setRows(5);
         jScrollPane2.setViewportView(windowMessage);
 
         send.setText("Send");
@@ -182,12 +185,13 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
     private javax.swing.JMenuItem menuItemExit;
     private javax.swing.JTextField messageSend;
     private javax.swing.JButton send;
-    private javax.swing.JList<String> windowMessage;
+    private javax.swing.JTextArea windowMessage;
     private ModelChannel channel;
 
     @Override
     public void update(Observable o, Object arg) {
-
+//Mise à jour des messages sur le modèle avec retour chariot
+      //  ModelChannelMessage.append("" + arg + "\n");
     }
 
 
