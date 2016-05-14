@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
+
 /**
  * Created by Frank on 11/05/2016.
  */
@@ -194,7 +195,6 @@ public class ViewConnection extends javax.swing.JFrame implements Observer {
     private javax.swing.JTextPane serverNameJTP;
     private javax.swing.JLabel serverPortJL;
     private javax.swing.JTextPane serverPortJTP;
-
 
 
     @Override

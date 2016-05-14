@@ -1,8 +1,10 @@
 package view;
 
 
+import model.ModelChannel;
+import model.ModelChannelMessage;
+import model.ModelChannelMessageToString;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
@@ -11,11 +13,29 @@ import java.util.Observer;
 /**
  * Created by Frank on 12/05/2016.
  */
-public class ViewClient extends javax.swing.JFrame implements Observer {
+public class ViewMain extends javax.swing.JFrame implements Observer {
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JList<String> listUser;
+    private javax.swing.JMenu menuConnection;
+    private javax.swing.JMenuItem menuItemConnect;
+    private javax.swing.JMenuItem menuItemDisconnect;
+    private javax.swing.JMenuItem menuItemExit;
+    private javax.swing.JTextField messageSend;
+    private javax.swing.JButton send;
+    private javax.swing.JList<String> windowMessage;
+    private ModelChannel channel;
+    //test
+    private String pseudo "bob";
 
-
-    public ViewClient() {
+    public ViewMain(ModelChannel channel, String pseudo) {
         initComponents();
+        super(pseudo);
+        this.channel = channel;
+        this.channel.addObserver(this);
+        this.pseudo.setText(pseudo);
     }
 
     /**
@@ -139,13 +159,13 @@ public class ViewClient extends javax.swing.JFrame implements Observer {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -153,24 +173,13 @@ public class ViewClient extends javax.swing.JFrame implements Observer {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewClient().setVisible(true);
+                new ViewMain().setVisible(true);
             }
         });
     }
 
-    // Variables declaration - do not modify
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JList<String> listUser;
-    private javax.swing.JMenu menuConnection;
-    private javax.swing.JMenuItem menuItemConnect;
-    private javax.swing.JMenuItem menuItemDisconnect;
-    private javax.swing.JMenuItem menuItemExit;
-    private javax.swing.JTextField messageSend;
-    private javax.swing.JButton send;
-    private javax.swing.JList<String> windowMessage;
+
+
 
     @Override
     public void update(Observable o, Object arg) {
@@ -195,24 +204,31 @@ public class ViewClient extends javax.swing.JFrame implements Observer {
             cancel();
         }
     }
+
     public class ActionSend implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             send();
         }
+
     }
+
     public void connect() {
 
     }
+
     public void disconnect() {
 
 
     }
+
     public void cancel() {
         this.dispose();
     }
 
     public void send() {
-
+        ModelChannelMessage nouveauMessage = new ModelChannelMessageToString(pseudo.getText(), windowMessage.getText());
+        windowMessage.setText("");
+        channel.add(nouveauMessage);
     }
     // End of variables declaration
 }
