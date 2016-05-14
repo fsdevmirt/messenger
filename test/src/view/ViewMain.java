@@ -14,29 +14,19 @@ import java.util.Observer;
  * Created by Frank on 12/05/2016.
  */
 public class ViewMain extends javax.swing.JFrame implements Observer {
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JList<String> listUser;
-    private javax.swing.JMenu menuConnection;
-    private javax.swing.JMenuItem menuItemConnect;
-    private javax.swing.JMenuItem menuItemDisconnect;
-    private javax.swing.JMenuItem menuItemExit;
-    private javax.swing.JTextField messageSend;
-    private javax.swing.JButton send;
-    private javax.swing.JList<String> windowMessage;
-    private ModelChannel channel;
+
     //test
     private String pseudo="bob";
 
-    public ViewMain(ModelChannel channel) {
+    public ViewMain() {
+
         initComponents();
 
-        this.channel = channel;
-        this.channel.addObserver(this);
+
 
     }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -170,16 +160,30 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the form */
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ViewMain().setVisible(true);
+
             }
         });
+
     }
 
 
-
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JList<String> listUser;
+    private javax.swing.JMenu menuConnection;
+    private javax.swing.JMenuItem menuItemConnect;
+    private javax.swing.JMenuItem menuItemDisconnect;
+    private javax.swing.JMenuItem menuItemExit;
+    private javax.swing.JTextField messageSend;
+    private javax.swing.JButton send;
+    private javax.swing.JList<String> windowMessage;
+    private ModelChannel channel;
 
     @Override
     public void update(Observable o, Object arg) {
@@ -226,9 +230,10 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
     }
 
     public void send() {
-        ModelChannelMessage nouveauMessage = new ModelChannelMessageToString(pseudo.getText(), windowMessage.getText());
+     /*   ModelChannelMessage nouveauMessage = new ModelChannelMessageToString(pseudo.getText(), windowMessage.getText());
         windowMessage.setText("");
         channel.add(nouveauMessage);
+        */
     }
     // End of variables declaration
 }
