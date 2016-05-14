@@ -238,7 +238,8 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
     }
 
     public void send() {
-        ModelChannelMessage newMessage = new ModelChannelMessageToString(pseudo.getText(), windowMessage.getText());
+        ModelChannelMessage newMessage;
+        newMessage = new ModelChannelMessageToString(pseudo,windowMessage.getText());
         windowMessage.setText("");
         channel.add(newMessage);
         
