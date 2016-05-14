@@ -1,6 +1,4 @@
-import model.ModelChannel;
-import view.ViewConnection;
-import view.ViewMain;
+
 
 /**
  * Created by Frank on 11/05/2016.
