@@ -5,6 +5,7 @@ import model.ModelChannel;
 import model.ModelChannelMessage;
 import model.ModelChannelMessageToString;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
@@ -137,6 +138,7 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
                 ActionSend()
 
         );
+
     }// </editor-fold>
 
     private void menuItemConnectActionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,7 +172,8 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewMain().setVisible(true);
+                ModelChannel channel = new ModelChannel();
+                new ViewMain(channel).setVisible(true);
 
             }
         });
@@ -195,7 +198,7 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
     @Override
     public void update(Observable o, Object arg) {
 //Mise à jour des messages sur le modèle avec retour chariot
-      //  ModelChannelMessage.append("" + arg + "\n");
+        windowMessage.append("" + arg + "\n");
     }
 
 
@@ -219,7 +222,7 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
 
     public class ActionSend implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            send();
+            send(messageSend);
         }
 
     }
@@ -237,10 +240,10 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
         this.dispose();
     }
 
-    public void send() {
+    public void send(JTextField messageSend) {
         ModelChannelMessage newMessage;
-        newMessage = new ModelChannelMessageToString(pseudo,windowMessage.getText());
-        windowMessage.setText("");
+        newMessage = new ModelChannelMessageToString(pseudo,messageSend.getText());
+        messageSend.setText("");
         channel.add(newMessage);
         
     }
