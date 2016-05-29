@@ -1,12 +1,9 @@
 package view;
 
 
-import model.ModelChannel;
-import model.ModelChannelMessage;
-import model.ModelChannelMessageToString;
+import model.ModelServer;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
@@ -16,17 +13,17 @@ import java.util.Observer;
  */
 public class ViewMain extends javax.swing.JFrame implements Observer {
     //Test
-   private ModelChannel channel;
+   private ModelServer channel;
     private String pseudo="bob";
     DefaultListModel user = new DefaultListModel();
 
     //Fin test
 
-    public ViewMain(ModelChannel channel) {
+    public ViewMain() {
         initComponents();
 
-        this.channel = channel;
-        this.channel.addObserver(this);
+       // this.channel = channel;
+      //  this.channel.addObserver(this);
        //Ajout d'un label avec NickName
         // this.pseudo.setText(pseudo);
 
@@ -121,29 +118,25 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
 
         pack();
         //MenuItems
-        this.menuItemConnect.addActionListener(new
-
-                ActionConnect()
-
-        );
+      /*
         this.menuItemDisconnect.addActionListener(new
 
-                ActionDisconnect()
+              //  ControllerClient.ActionDisconnect()
 
         );
 
         this.menuItemExit.addActionListener(new
 
-                ActionCancel()
+             //   ActionCancel()
 
         );
         //Envoi du message
         this.send.addActionListener(new
 
-                ActionSend()
+               // ActionSend()
 
         );
-
+*/
     }// </editor-fold>
 
     private void menuItemConnectActionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,8 +170,8 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ModelChannel channel = new ModelChannel();
-                new ViewMain(channel).setVisible(true);
+            //    ModelServer channel = new ModelServer();
+                new ViewMain().setVisible(true);
 
             }
         });
@@ -206,52 +199,18 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
         windowMessage.append("" + arg + "\n");
     }
 
-
-    public class ActionConnect implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            connect();
-        }
+    public void setMenuItemConnectActionListener(ActionListener listener) {
+        this.menuItemConnect.addActionListener(listener);
     }
 
-    public class ActionDisconnect implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            disconnect();
-        }
+    public void setSendActionListener(ActionListener listener) {
+        this.send.addActionListener(listener);
     }
 
-    public class ActionCancel implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            cancel();
-        }
+    public String getMessage() {
+        return this.messageSend.getText();
     }
 
-    public class ActionSend implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            send(messageSend);
-        }
-
-    }
-
-    public void connect() {
-        new ViewConnection().setVisible(true);
-    }
-
-    public void disconnect() {
-
-
-    }
-
-    public void cancel() {
-        this.dispose();
-    }
-
-    public void send(JTextField messageSend) {
-        ModelChannelMessage newMessage;
-        newMessage = new ModelChannelMessageToString(pseudo,messageSend.getText());
-        messageSend.setText("");
-        channel.add(newMessage);
-        
-    }
     // End of variables declaration
 }
 

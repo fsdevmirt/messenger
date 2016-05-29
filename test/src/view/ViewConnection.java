@@ -1,10 +1,6 @@
 package view;
 
 
-import model.ModelChannelMessage;
-import model.ModelChannelMessageToString;
-
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
@@ -149,6 +145,7 @@ public class ViewConnection extends javax.swing.JFrame implements Observer {
                 ActionCancel()
 
         );
+
     }// </editor-fold>
 
     /**
@@ -205,15 +202,9 @@ public class ViewConnection extends javax.swing.JFrame implements Observer {
     public void update(Observable o, Object arg) {
 
     }
-    public class ActionConnect implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            //connect();
-        }
-    }
 
-    public void connect(JTextField pseudoJTP) {
-        ModelChannelMessage newMessage;
-     //   newMessage = new ModelChannelMessageToString(pseudo.getText());
+    public void setConnectJBActionListener(ActionListener listener) {
+        this.connectJB.addActionListener(listener);
 
     }
 
@@ -228,5 +219,15 @@ public class ViewConnection extends javax.swing.JFrame implements Observer {
         this.dispose();
     }
     // End of variables declaration
+
+    public String getPortValue() {
+        return this.serverPortJTP.getText();
+    }
+    public String getNickNameValue() {
+        return this.pseudoJTP.getText();
+    }
+    public String getServerHostValue() {
+        return this.serverNameJTP.getText();
+    }
 }
 
