@@ -1,5 +1,6 @@
 package model;
 
+import java.io.DataOutputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -10,14 +11,15 @@ import java.util.Observable;
  */
 public class ModelServer extends Observable {
 
-    private List<ModelServerMessageToString> windowMessage;
+    private List<String> windowMessage;
 
     public ModelServer() {
-        this.windowMessage = new ArrayList<ModelServerMessageToString>();
+        this.windowMessage = new ArrayList<String>();
     }
 
-    public void add(ModelServerMessageToString mess) {
-      //  this.windowMessage.add(mess);
+    public void add(String mess) {
+       this.windowMessage.add(mess);
+        //DataOutputStream outToServer = new DataOutputStream(ModelClient.this.clientSocket.getOutputStream());
         this.setChanged();
         this.notifyObservers(mess);
     }

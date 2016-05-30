@@ -31,8 +31,9 @@ public class ControllerConnection {
                         ControllerConnection.this.viewConnection.getServerHostValue(),
                         ControllerConnection.this.viewConnection.getPortValue(),
                         ControllerConnection.this.viewConnection.getNickNameValue()
-                );
 
+                );
+                ControllerConnection.this.viewConnection.setVisible(false);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }

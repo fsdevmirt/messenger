@@ -13,8 +13,8 @@ import java.util.Observer;
  */
 public class ViewMain extends javax.swing.JFrame implements Observer {
     //Test
-   private ModelServer channel;
-    private String pseudo="bob";
+    private ModelServer channel;
+    private String pseudo = "bob";
     DefaultListModel user = new DefaultListModel();
 
     //Fin test
@@ -22,14 +22,13 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
     public ViewMain() {
         initComponents();
 
-       // this.channel = channel;
-      //  this.channel.addObserver(this);
-       //Ajout d'un label avec NickName
+        // this.channel = channel;
+        //  this.channel.addObserver(this);
+        //Ajout d'un label avec NickName
         // this.pseudo.setText(pseudo);
 
 
     }
-
 
 
     /**
@@ -170,7 +169,7 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-            //    ModelServer channel = new ModelServer();
+                //    ModelServer channel = new ModelServer();
                 new ViewMain().setVisible(true);
 
             }

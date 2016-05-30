@@ -44,12 +44,14 @@ this.viewMain.setMenuItemConnectActionListener(new ActionConnect());
 
     public class ActionSend implements ActionListener {
         protected ViewConnection viewConnection;
+
         public void actionPerformed(ActionEvent e) {
-           /* test de passage du message au controlleur
-            System.out.print(ControllerClient.this.viewMain.getMessage());
-             */
+          // test de passage du message au controlleur
+            String mess= ControllerClient.this.viewMain.getMessage();
+            System.out.println(mess);
+
             ControllerClient.this.modelClient.sendServer(
-                    ControllerClient.this.viewMain.getMessage());
+                    mess);
 
         }
 

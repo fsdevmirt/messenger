@@ -14,13 +14,17 @@ import java.util.Observable;
 public class ModelClient extends Observable {
     private ModelServer windowMessage;
     protected String nickName;
+    protected Socket clientSocket;
 
-    public void connect(String serverHost, String serverPort,String nickName)throws Exception  {
-this.nickName=nickName;
+    public ModelClient() {
+        this.windowMessage = new ModelServer();
+    }
+
+    public void connect(String serverHost, String serverPort, String nickName) throws Exception {
+        this.nickName = nickName;
         String sentence;
-        String modifiedSentence;
         BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
-        Socket clientSocket = new Socket(serverHost, Integer.parseInt(serverPort));
+        clientSocket = new Socket(serverHost, Integer.parseInt(serverPort));
 
     }
 
@@ -29,12 +33,13 @@ this.nickName=nickName;
         ModelServerMessageToString newMessage;
         newMessage = new ModelServerMessageToString(nickName, messageSend.getText());
         messageSend.setText("");
-        windowMessage.add(newMessage);
+        //  windowMessage.add(newMessage);
 
     }
 
     public void sendServer(String messageSend) {
-        windowMessage.add(new ModelServerMessageToString(nickName, messageSend));
+        //  windowMessage.add(new ModelServerMessageToString(nickName, messageSend));
+        windowMessage.add(messageSend);
 
     }
 
