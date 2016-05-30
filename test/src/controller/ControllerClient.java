@@ -16,10 +16,10 @@ public class ControllerClient {
 
     public ControllerClient() {
         this.viewMain = new ViewMain();
-this.viewMain.setMenuItemConnectActionListener(new ActionConnect());
+        this.viewMain.setMenuItemConnectActionListener(new ActionConnect());
         this.viewMain.setSendActionListener(new ActionSend());
         this.modelClient = new ModelClient();
-       this.viewMain.setVisible(true);
+        this.viewMain.setVisible(true);
     }
 
     public class ActionConnect implements ActionListener {
@@ -46,12 +46,13 @@ this.viewMain.setMenuItemConnectActionListener(new ActionConnect());
         protected ViewConnection viewConnection;
 
         public void actionPerformed(ActionEvent e) {
-          // test de passage du message au controlleur
-            String mess= ControllerClient.this.viewMain.getMessage();
+            // test de passage du message au controlleur
+            String mess = ControllerClient.this.viewMain.getMessage();
             System.out.println(mess);
 
-            ControllerClient.this.modelClient.sendServer(
-                    mess);
+            ControllerClient.this.modelClient.sendServer(mess);
+            ControllerClient.this.viewMain.addMessageToList(mess);
+            ControllerClient.this.viewMain.emptyMessage();
 
         }
 

@@ -1,8 +1,6 @@
 package view;
 
 
-import model.ModelServer;
-
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.Observable;
@@ -11,9 +9,8 @@ import java.util.Observer;
 /**
  * Created by Frank on 12/05/2016.
  */
-public class ViewMain extends javax.swing.JFrame implements Observer {
-    //Test
-    private ModelServer channel;
+public class ViewMain extends javax.swing.JFrame  {
+
     private String pseudo = "bob";
     DefaultListModel user = new DefaultListModel();
 
@@ -169,7 +166,6 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //    ModelServer channel = new ModelServer();
                 new ViewMain().setVisible(true);
 
             }
@@ -192,8 +188,8 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
     private javax.swing.JTextArea windowMessage;
 
 
-    @Override
-    public void update(Observable o, Object arg) {
+
+    public void addMessageToList(String arg) {
 //Mise à jour des messages sur le modèle avec retour chariot
         windowMessage.append("" + arg + "\n");
     }
@@ -210,6 +206,9 @@ public class ViewMain extends javax.swing.JFrame implements Observer {
         return this.messageSend.getText();
     }
 
+    public void emptyMessage() {
+        this.messageSend.setText("");
+    }
     // End of variables declaration
 }
 
