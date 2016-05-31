@@ -113,27 +113,8 @@ public class ViewMain extends javax.swing.JFrame  {
         );
 
         pack();
-        //MenuItems
-      /*
-        this.menuItemDisconnect.addActionListener(new
 
-              //  ControllerClient.ActionDisconnect()
-
-        );
-
-        this.menuItemExit.addActionListener(new
-
-             //   ActionCancel()
-
-        );
-        //Envoi du message
-        this.send.addActionListener(new
-
-               // ActionSend()
-
-        );
-*/
-    }// </editor-fold>
+    }
 
     private void menuItemConnectActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:

@@ -45,8 +45,6 @@ public class ViewConnection extends javax.swing.JFrame implements Observer {
         setTitle("Connection");
         setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setFocusable(false);
-        setFocusableWindowState(false);
         setName("connection"); // NOI18N
         setResizable(false);
 
@@ -63,6 +61,7 @@ public class ViewConnection extends javax.swing.JFrame implements Observer {
         jScrollPane1.setViewportView(serverPortJTP);
 
         serverNameJTP.setText("localhost");
+        serverNameJTP.setEditable(true);
         serverNameJTP.setAutoscrolls(false);
         jScrollPane2.setViewportView(serverNameJTP);
 
@@ -223,9 +222,11 @@ public class ViewConnection extends javax.swing.JFrame implements Observer {
     public String getPortValue() {
         return this.serverPortJTP.getText();
     }
+
     public String getNickNameValue() {
         return this.pseudoJTP.getText();
     }
+
     public String getServerHostValue() {
         return this.serverNameJTP.getText();
     }

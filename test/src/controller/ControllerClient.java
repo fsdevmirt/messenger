@@ -1,11 +1,13 @@
 package controller;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import model.ModelClient;
 import view.ViewConnection;
 import view.ViewMain;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * Created by Frank on 13/05/2016.
@@ -32,7 +34,7 @@ public class ControllerClient {
 
     public class ActionDisconnect implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            //disconnect();
+            ControllerClient.this.modelClient.disconnect();
         }
     }
 
@@ -42,16 +44,22 @@ public class ControllerClient {
         }
     }
 
-    public class ActionSend implements ActionListener {
+    public class ActionSend implements ActionListener  {
         protected ViewConnection viewConnection;
 
         public void actionPerformed(ActionEvent e) {
-            // test de passage du message au controlleur
-            String mess = ControllerClient.this.viewMain.getMessage();
-            System.out.println(mess);
 
-            ControllerClient.this.modelClient.sendServer(mess);
-            ControllerClient.this.viewMain.addMessageToList(mess);
+            String mess = ControllerClient.this.viewMain.getMessage();
+
+
+            try {
+                ControllerClient.this.modelClient.sendServer(mess);
+                ControllerClient.this.viewMain.addMessageToList(mess);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+                ControllerClient.this.viewMain.addMessageToList("Erreur d'envoi au serveur: "+mess);
+            }
+
             ControllerClient.this.viewMain.emptyMessage();
 
         }
